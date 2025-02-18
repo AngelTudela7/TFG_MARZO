@@ -20,7 +20,7 @@ include('includes/database.php');
     <span></span>
     <span></span>
     <span></span>
-  </div>
+  </div> 
 
   <!-- Menú de navegación (oculto por defecto) -->
   <nav id="mobile-menu">
