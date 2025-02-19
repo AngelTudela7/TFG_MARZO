@@ -11,9 +11,9 @@ include('includes/database.php');
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fortune Football</title>
-  <link rel="stylesheet" href="/TFG/assets/css/competiciones.css">
+  <link rel="stylesheet" href="../../assets/css/competiciones.css">
   <link href="https://fonts.googleapis.com/css2?family=Tourney:wght@400;700&display=swap" rel="stylesheet">
-  <script defer src="/TFG/assets/js/competiciones.js"></script>
+  <script defer src="../../assets/js/competiciones.js"></script>
 </head>
 
 <body>
@@ -30,7 +30,7 @@ include('includes/database.php');
     <ul>
       <li><a href="jugadores.php">Jugadores</a></li>
       <li><a href="modules/partidos/partidos.php">Partidos</a></li>
-      <li><a href="\TFG\index.php">Noticias</a></li>
+      <li><a href="../../index.php">Noticias</a></li>
       <li><a href="modules/equipos/equipos.php">Equipos</a></li>
       <li><a href="modules/jugadores/jugadores.php">Jugadores</a></li>
 
@@ -40,7 +40,7 @@ include('includes/database.php');
   <!-- Barra de navegación normal (desktop) -->
   <header class="navbar">
     <div class="navbar-content">
-      <a href="\TFG\index.php" class="logo">Fortune Football</a>
+      <a href="../../index.php" class="logo">Fortune Football</a>
       <nav>
         <ul>
           <li><a href="modules/partidos/partidos.php">Partidos</a></li>
