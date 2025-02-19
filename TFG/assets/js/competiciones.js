@@ -67,6 +67,8 @@ async function cargar_resultados(id_competicion) {
     jornadasVisibles = 4; // Restablecemos a 4 jornadas al cambiar de competición
 
     mostrarJornadas(jornadasVisibles); // Mostrar las primeras 4 jornadas
+    document.getElementById('boton-cargar').innerHTML = ''; // Eliminar el botón al cambiar de competición
+
     mostrarBotonCargar(); // Mostrar el botón "Cargar todos"
 }
 
@@ -230,6 +232,78 @@ async function cargar_partidos(id_competicion) {
 }
 
 
+//Función para cargar goleadores de la liga
+
+
+async function cargar_goleadores(id_competicion) {
+   console.log("ID de la competición:", id_competicion); // Depuración
+   
+   if (!id_competicion) {
+       console.error("ID de competición no válido");
+       return;
+   }
+   
+   const url = `https://api.football-data.org/v2/competitions/${id_competicion}/scorers`;
+   
+   try {
+       const response = await fetch(url, {
+           method: "GET",
+           headers: { "X-Auth-Token": "05a381fe6cfc42949e6c52abd91774c0" }
+       });
+       
+       if (!response.ok) {
+           console.error("Error al cargar los goleadores", response.status);
+           return;
+       }
+       
+       const datosGoleadores = await response.json();
+       console.log("Datos de goleadores recibidos:", datosGoleadores); // Depuración
+       
+       const goleadoresContainer = document.getElementById('goleadores');
+       if (!goleadoresContainer) {
+           console.error("El contenedor de goleadores no existe en el DOM");
+           return;
+       }
+       
+       goleadoresContainer.innerHTML = `<h2>Tabla de Goleadores</h2>`;
+       
+       let tablaHTML = `<table>
+                           <tr>
+                               <th>Posición</th>
+                               <th>Jugador</th>
+                               <th>Equipo</th>
+                               <th>Goles</th>
+                           </tr>`;
+       
+       datosGoleadores.scorers.forEach((jugador, index) => {
+           tablaHTML += `<tr>
+                           <td>${index + 1}</td>
+                           <td>${jugador.player.name}</td>
+                           <td>${jugador.team.name}</td>
+                           <td>${jugador.numberOfGoals}</td>
+                         </tr>`;
+       });
+       
+       tablaHTML += `</table>`;
+       goleadoresContainer.innerHTML += tablaHTML;
+       
+       goleadoresContainer.style.display = "block";
+   } catch (error) {
+       console.error("Error al obtener datos de la API", error);
+   }
+}
+
+document.getElementById('goleadores-tab').addEventListener('click', () => {
+   if (typeof ID_COMPETICION_ACTUAL !== 'undefined' && ID_COMPETICION_ACTUAL) {
+       cargar_goleadores(ID_COMPETICION_ACTUAL);
+   } else {
+       console.error("ID de competición no está definido");
+   }
+});
+
+
+
+
 
 
 //----------------------------------------------------------
@@ -321,6 +395,7 @@ function configurarClickCompetitions() {
         
          cargar_resultados(id_competicion_clicada);  // Cargar resultados
          cargar_clasificacion(id_competicion_clicada); // Cargar clasificación
+         cargar_goleadores(id_competicion_clicada)
       }
    });
 }
@@ -332,21 +407,29 @@ function configurarNavegacionTabs() {
   
    document.getElementById('resultados-tab').addEventListener('click', () => {
       document.getElementById('resultados').style.display = 'block';
-      
+      document.getElementById('cargar-todos').style.display = 'block';
       document.getElementById('clasificacion').style.display = 'none';
 
       if (document.getElementById('resultados').style.display = 'block') {
          document.getElementById('clasificacion').style.display = 'none';
+         
       }
 
    });
    document.getElementById('clasificacion-tab').addEventListener('click', () => {
       document.getElementById('resultados').style.display = 'none';
-      
+      document.getElementById('cargar-todos').style.display = 'none';
       document.getElementById('clasificacion').style.display = 'block';
    });
 
+   document.getElementById('limpiar-tab').addEventListener('click' , () => {
 
+      document.getElementById('clasificacion').style.display = 'none';
+      document.getElementById('resultados').style.display = 'none';
+      document.getElementById('cargar-todos').style.display = 'none';
+   });
+
+   
 
 }
 

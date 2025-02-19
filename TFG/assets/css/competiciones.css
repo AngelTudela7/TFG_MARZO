@@ -583,3 +583,67 @@
 .btn-cargar:hover {
   background-color: #ffcc33; /* Amarillo más claro en hover */
 }
+
+
+
+/* Estilo para la tabla */
+.goleadores-tabla {
+  width: 80%; /* Ajusta el tamaño de la tabla a tu gusto */
+  max-width: 1000px; /* Un límite máximo de ancho */
+  border-collapse: collapse; /* Elimina los espacios entre celdas */
+  background-color: #121212;
+  
+  margin: 0 auto; /* Centra la tabla horizontalmente */
+}
+
+/* Estilos para las celdas de la tabla */
+.goleadores-tabla th,
+.goleadores-tabla td {
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+ 
+}
+
+/* Estilo para las cabeceras */
+.goleadores-tabla th {
+  background-color:#121212 ; /* Un verde para las cabeceras */
+  color: white;
+}
+
+/* Estilo para las filas alternadas */
+
+/* Efecto hover para toda la fila */
+.goleadores-tabla tr:hover {
+  background-color: #ffbc00; /* Cambio de fondo al pasar el ratón */
+  color: #fff; /* Asegura que el texto también cambie de color al hacer hover */
+}
+
+/* Asegura que el texto de los logotipos y los nombres de los equipos se alineen bien */
+.goleadores-tabla td img {
+  width: 25px; /* Tamaño del logo del equipo */
+  height: 25px;
+  vertical-align: middle;
+  margin-right: 8px; /* Espacio entre el logo y el nombre del equipo */
+  border-radius: 50%; /* Redondeo del logo */
+  object-fit: contain; /* Asegura que la imagen no se deforme */
+}
+
+/* Hacer que la tabla sea más accesible y limpia */
+.goleadores-tabla td,
+.goleadores-tabla th {
+  text-align: center; /* Centra el texto en las celdas */
+  vertical-align: middle; /* Centra el texto verticalmente */
+}
+
+/* Efecto hover para toda la fila con transición y color transparente */
+.goleadores-tabla tr {
+  transition: background-color 0.3s ease, color 0.3s ease; /* Animación suave */
+}
+
+/* Efecto hover con transparencia */
+.goleadores-tabla tr:hover {
+  background-color: rgba(255, 188, 0, 0.7); /* Fondo con opacidad */
+  color: #fff; /* Asegura que el texto también cambie de color */
+}

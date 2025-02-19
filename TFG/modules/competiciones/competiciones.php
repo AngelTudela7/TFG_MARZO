@@ -69,14 +69,15 @@ include('includes/database.php');
   <div class="tabs">
     <button class="tab" id="resultados-tab">Resultados</button>
     <button class="tab" id="clasificacion-tab">Clasificación</button>
-
+    <button class="tab" id="goleadores-tab">Tabla Goleadores</button>
+    <button class="tab" id="limpiar-tab">Limpiar</button>
   </div>
 
   <div class="content">
     <div id="resultados" class="section"></div>
    
     <div id="clasificacion" class="section" style="display:none;"></div>
-    
+    <div id="goleadores" class="section" style="display: none;"></div>
   </div>
 
   <div id="boton-cargar"></div>
